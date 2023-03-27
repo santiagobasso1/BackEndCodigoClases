@@ -1,4 +1,4 @@
-const eleccionBDD = 1;
+const eleccionBDD = process.env.DBSELECTION;
 
 export const getManagerMensajes = async()=>{
     const modeloMensaje = eleccionBDD === 1 ? 

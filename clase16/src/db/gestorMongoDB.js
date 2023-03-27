@@ -1,12 +1,15 @@
 import mongoose from "mongoose";
 
-export class MongoDBManager{
-    constructor(url,collection,schema){
-        this.url = url;
-        this.collection = collection;
-        this.schema = new mongoose.Schema(schema);
-        this.model = mongoose.model(this.collection, this.schema);
+export class ManagerMongoDB {
+
+    #url
+    constructor(url, collection, schema) {
+        this.#url = url //Atributo privado
+        this.collection = collection
+        this.schema = new mongoose.Schema(schema)
+        this.model = mongoose.model(this.collection, this.schema)
     }
+
     async #setConnection() {
         try {
             await mongoose.connect(this.#url)
@@ -60,4 +63,5 @@ export class MongoDBManager{
             return error
         }
     }
+
 }
